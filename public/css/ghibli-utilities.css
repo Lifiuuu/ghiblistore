@@ -1,0 +1,206 @@
+.shadow-soft { box-shadow: 0 10px 30px rgba(46,79,59,0.08) !important; }
+.shadow-soft-sm { box-shadow: 0 6px 20px rgba(46,79,59,0.06) !important; }
+
+/* Fallback theme color variables and utility classes
+	 These ensure the Ghibli palette is applied even if Tailwind
+	 hasn't generated the utility classes (useful for dev). */
+:root {
+	--ghibli-cream: #F9F6F0;
+	--ghibli-forest: #2E4F3B;
+	--ghibli-sky: #7BA7BC;
+	--ghibli-text: #332E2C;
+	--ghibli-accent-yellow: #F7E9A7;
+	--ghibli-accent-peach: #FAD6C0;
+}
+
+.bg-ghibli-cream { background-color: var(--ghibli-cream) !important; }
+.bg-ghibli-forest { background-color: var(--ghibli-forest) !important; }
+.bg-ghibli-sky { background-color: var(--ghibli-sky) !important; }
+.text-ghibli-text { color: var(--ghibli-text) !important; }
+.text-ghibli-cream { color: var(--ghibli-cream) !important; }
+.bg-ghibli-accent-peach { background-color: var(--ghibli-accent-peach) !important; }
+.bg-ghibli-accent-yellow { background-color: var(--ghibli-accent-yellow) !important; }
+.text-ghibli-forest { color: var(--ghibli-forest) !important; }
+
+/* Expose a consistent set of radii as utility classes */
+.radius-2xl { border-radius: 1rem !important; }
+.radius-3xl { border-radius: 1.5rem !important; }
+.radius-full { border-radius: 9999px !important; }
+
+/* Gentle focus ring tuned to the Ghibli palette */
+.focus-ring-ghibli:focus { box-shadow: 0 0 0 4px rgba(123,167,188,0.12); outline: none; }
+
+/* Small helper to subtly tint backgrounds for cards */
+.bg-cream-soft { background-color: rgba(249,246,240,0.9) !important; }
+
+/* Directional rounded utilities (consistent with radius helpers) */
+.rounded-b-2xl { border-bottom-left-radius: 1rem !important; border-bottom-right-radius: 1rem !important; }
+.rounded-t-2xl { border-top-left-radius: 1rem !important; border-top-right-radius: 1rem !important; }
+.rounded-b-3xl { border-bottom-left-radius: 1.5rem !important; border-bottom-right-radius: 1.5rem !important; }
+
+/* Directional single-side helpers */
+.rounded-l-2xl { border-top-left-radius: 1rem !important; border-bottom-left-radius: 1rem !important; }
+.rounded-r-2xl { border-top-right-radius: 1rem !important; border-bottom-right-radius: 1rem !important; }
+
+/* Section layout and spacing utilities ------------------------------------------------------------------ */
+:root {
+	--section-vertical: 4rem;
+	--section-horizontal: 1rem;
+	--section-max-width: 1100px;
+}
+
+/* Base section: use consistent vertical rhythm and horizontal padding */
+.section {
+	padding: var(--section-vertical) var(--section-horizontal);
+}
+
+/* Responsive increases for larger screens */
+@media (min-width: 768px) {
+	:root {
+		--section-vertical: 5rem; /* ~4rem * 1.25 */
+		--section-horizontal: 2rem;
+	}
+}
+@media (min-width: 1024px) {
+	:root {
+		--section-vertical: 6rem; /* ~4rem * 1.5 */
+		--section-horizontal: 3rem;
+	}
+}
+
+/* Variants for more/less vertical spacing */
+.section--compact { --section-vertical: 2rem; }
+.section--spacious { --section-vertical: 8rem; }
+
+/* Constrain content and keep consistent horizontal gutters */
+.section-inner {
+	max-width: var(--section-max-width);
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: var(--section-horizontal);
+	padding-right: var(--section-horizontal);
+}
+
+/* Split layouts (useful for hero / feature split components) */
+.split { display: flex; gap: 2rem; align-items: center; }
+.split .col { flex: 1; min-width: 0; }
+@media (max-width: 767px) {
+	.split { flex-direction: column; gap: 1.5rem; }
+}
+
+/* Small helpers to align and balance content inside sections */
+.align-center { text-align: center; }
+.align-left { text-align: left; }
+.align-right { text-align: right; }
+
+/* Ensure consistent spacing between stacked sections (keeps rhythm even) */
+.section + .section {
+	margin-top: calc(var(--section-vertical) / 2);
+}
+
+/* Utility to vertically center content inside a full-height section */
+.section--centered { display: grid; place-items: center; }
+
+/* Allow inner content to be constrained while enabling a full-bleed
+   row/column that ignores the section horizontal gutters. Use a simple
+   centered transform and fixed viewport width to avoid creating extra
+   overflow. Inner alignment should be handled by `section-inner`. */
+.section-bleed {
+	position: relative;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 100vw;
+	max-width: 100vw;
+	box-sizing: border-box;
+}
+
+/* End section utilities ------------------------------------------------------------------------------- */
+
+/* Card animation helpers */
+.card-anim {
+	transition: transform 260ms cubic-bezier(.22,.9,.3,1), box-shadow 260ms ease, opacity 420ms ease; /* slightly longer, smoother */
+	transform-origin: 50% 50%;
+	will-change: transform;
+}
+/* reduce hover lift/scale for a subtler pop */
+.card-anim.is-hover { transform: translateY(-6px) scale(1.01); box-shadow: 0 16px 32px rgba(46,79,59,0.10); }
+.card-anim.is-visible { opacity: 1; transform: translateY(0); }
+.card-anim { opacity: 0; transform: translateY(10px); }
+
+/* Small tilt transform applied via inline style when pointer moves */
+.card-tilt { transform-style: preserve-3d; }
+
+/* Button pop animation and hover color swap */
+.btn-pop {
+	transition: transform 180ms cubic-bezier(.2,.9,.2,1), background-color 180ms ease, color 180ms ease, box-shadow 180ms ease;
+	will-change: transform, background-color, color;
+}
+.btn-pop.is-hover, .btn-pop:hover {
+	transform: translateY(-4px) scale(1.01);
+	box-shadow: 0 8px 20px rgba(46,79,59,0.10);
+	background-color: var(--ghibli-forest);
+	color: var(--ghibli-cream);
+}
+
+/* Hero slide visibility */
+.hero-slide { opacity: 0; transition: opacity 420ms ease; pointer-events: none; }
+.hero-slide.active { opacity: 1; pointer-events: auto; }
+.carousel-dots button { background-color: rgba(249,246,240,0.6); }
+.carousel-dots button.bg-ghibli-accent-peach { background-color: var(--ghibli-accent-peach); }
+
+/* Reveal-on-scroll helpers and Ghibli float/pulse animations (moved from layout inline styles) */
+[class*="reveal-"] {
+	opacity: 0;
+	transition-property: opacity, transform;
+	transition-duration: 0.9s;
+	transition-timing-function: cubic-bezier(0.65, 0, 0.35, 1);
+	will-change: transform, opacity;
+}
+
+.reveal-from-bottom { transform: translateY(60px); }
+.reveal-from-left { transform: translateX(-40px); }
+.reveal-from-right { transform: translateX(40px); }
+
+.zoom-in { transform: scale(0.97); }
+
+[class*="reveal-"].active,
+.zoom-in.active {
+	opacity: 1;
+	transform: translate(0) scale(1);
+}
+
+button.transition, a.transition {
+	transition-property: all;
+	transition-duration: 0.4s;
+	transition-timing-function: cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+button:hover, a:hover { transform: translateY(-2px); }
+
+/* Animasi Melayang / Pulse */
+@keyframes float-slow {
+	0%, 100% { transform: translateY(0) rotate(0deg); }
+	50% { transform: translateY(-20px) rotate(5deg); }
+}
+@keyframes float-medium {
+	0%, 100% { transform: translateY(0) translateX(0); }
+	50% { transform: translateY(-15px) translateX(10px); }
+}
+@keyframes pulse-glow {
+	0%, 100% { opacity: 0.4; transform: scale(1); }
+	50% { opacity: 0.8; transform: scale(1.1); }
+}
+
+.animate-float-slow { animation: float-slow 6s ease-in-out infinite; }
+.animate-float-medium { animation: float-medium 4s ease-in-out infinite; }
+.animate-pulse-glow { animation: pulse-glow 3s ease-in-out infinite; }
+
+/* Trik CSS untuk membuat bentuk daun */
+.shape-leaf { border-radius: 0 50% 0 50%; }
+
+/* Prevent horizontal page scrolling on desktop */
+html, body { overflow-x: hidden; }
+
+/* Ensure media and full-bleed helpers cannot force horizontal overflow */
+img, video { max-width: 100%; height: auto; }
+.section-bleed { box-sizing: border-box; }
