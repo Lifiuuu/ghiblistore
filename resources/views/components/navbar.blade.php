@@ -11,7 +11,7 @@
             <div class="hidden md:flex items-center space-x-8">
                 <a href="#features" class="text-lg text-ghibli-text hover:opacity-90 transition">Discover</a>
                 <a href="#stories" class="text-lg text-ghibli-text hover:opacity-90 transition">Stories</a>
-                <a href="#gallery" class="text-lg text-ghibli-text hover:opacity-90 transition">Collections</a>
+                <a href="https://www.ghibli.jp/works/" target="_blank" rel="noopener noreferrer" class="text-lg text-ghibli-text hover:opacity-90 transition">Collections</a>
                 <a href="#about" class="text-lg text-ghibli-text hover:opacity-90 transition">About</a>
 
                 <a href="#subscribe" class="ml-4 bg-ghibli-forest text-ghibli-cream radius-2xl px-6 py-2 text-lg shadow-lg hover:opacity-95 transition">
@@ -34,7 +34,7 @@
         <div class="px-6 pt-4 pb-6 space-y-4">
             <a href="#features" class="block text-lg text-ghibli-text hover:opacity-90">Discover</a>
             <a href="#stories" class="block text-lg text-ghibli-text hover:opacity-90">Stories</a>
-            <a href="#gallery" class="block text-lg text-ghibli-text hover:opacity-90">Collections</a>
+            <a href="https://www.ghibli.jp/works/" target="_blank" rel="noopener noreferrer" class="block text-lg text-ghibli-text hover:opacity-90">Collections</a>
             <a href="#about" class="block text-lg text-ghibli-text hover:opacity-90">About</a>
             <a href="#subscribe" class="block w-full text-center bg-ghibli-forest text-ghibli-cream radius-2xl px-6 py-2 text-lg shadow-lg mt-4">
                 Join Us

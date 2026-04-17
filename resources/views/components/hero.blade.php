@@ -46,7 +46,7 @@
   @endfor
 
   <div class="section-inner relative text-center z-10">
-    <div class="max-w-4xl mx-auto pt-20"> <h1 class="text-4xl md:text-5xl lg:text-6xl font-serif leading-tight text-ghibli-forest">Finding Magic in the Ordinary</h1>
+    <div class="max-w-4xl mx-auto pt-12"> <h1 class="text-4xl md:text-5xl lg:text-6xl font-serif leading-tight text-ghibli-forest">Finding Magic in the Ordinary</h1>
       <p class="mt-6 text-base md:text-lg max-w-3xl mx-auto text-ghibli-text/90">More than just animation, Studio Ghibli creates breathtaking worlds where nature breathes, magic is real, and human emotions resonate deeply. Step into a realm of wonder.</p>
       <div class="mt-8">
         <a href="https://r.search.yahoo.com/_ylt=AwrOro.BBeJpHAIAPKRXNyoA;_ylu=Y29sbwNncTEEcG9zAzMEdnRpZAMEc2VjA3Ny/RV=2/RE=1777629826/RO=10/RU=https%3a%2f%2fwww.ghibli.jp%2f%3flang%3den/RK=2/RS=FUXdTBTVGlLaepvSbprbrD9Ceng-" target="_blank" rel="noopener noreferrer" class="inline-block bg-ghibli-forest text-ghibli-cream px-8 py-3 radius-3xl shadow-lg">Explore the Studio</a>
