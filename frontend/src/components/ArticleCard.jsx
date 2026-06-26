@@ -9,7 +9,7 @@ export default function ArticleCard({ article }) {
         <img
           src={article.coverUrl}
           alt={article.title}
-          className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-105"
+          className="w-full aspect-video object-cover shrink-0 transition-transform duration-500 group-hover:scale-105"
         />
       </Link>
       <div className="p-5 flex flex-col flex-1">

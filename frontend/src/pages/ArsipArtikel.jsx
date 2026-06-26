@@ -39,7 +39,7 @@ export default function ArsipArtikel() {
             placeholder="Cari artikel..."
             value={search}
             onChange={e => { setSearch(e.target.value); setActiveCategory('Semua'); }}
-            className="w-full pl-10 pr-4 py-3 radius-2xl border border-ghibli-forest/20 bg-white text-ghibli-text text-sm focus:outline-none focus:ring-2 focus:ring-ghibli-sky/40 shadow-soft-sm max-w-full sm:max-w-md"
+            className="w-full pl-10 pr-4 py-3 radius-2xl border border-ghibli-forest/20 bg-white text-ghibli-text text-sm focus:outline-none focus:ring-2 focus:ring-ghibli-sky/40 shadow-soft-sm max-w-full"
           />
         </div>
 

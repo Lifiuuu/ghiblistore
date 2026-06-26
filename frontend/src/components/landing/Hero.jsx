@@ -52,17 +52,17 @@ export default function Hero() {
       <div className="section-inner relative text-center z-10">
         <div className="max-w-4xl mx-auto">
           <div className="inline-block bg-ghibli-accent-yellow/60 text-ghibli-forest text-xs font-semibold px-4 py-1.5 rounded-full mb-6 tracking-wide">
-            ✨ Merchandise Studio Ghibli Eksklusif
+            Merchandise Studio Ghibli Eksklusif
           </div>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif leading-tight text-ghibli-forest">
             Temukan Keajaiban<br />dalam Setiap Koleksi
           </h1>
           <p className="mt-6 text-base md:text-lg max-w-3xl mx-auto text-ghibli-text/80">
-            Dari boneka Totoro yang lembut hingga lampu Calcifer yang bersinar hangat — kami menghadirkan dunia sihir Studio Ghibli langsung ke tanganmu.
+            Dari boneka Totoro yang lembut hingga lampu Calcifer yang bersinar hangat, kami menghadirkan dunia sihir Studio Ghibli langsung ke tanganmu.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-4">
             <Link to="/katalog" className="inline-block bg-ghibli-forest text-ghibli-cream px-8 py-3.5 radius-3xl shadow-lg font-semibold btn-pop">
-              Lihat Katalog 🛍️
+              Lihat Katalog
             </Link>
             <Link to="/artikel" className="inline-block border-2 border-ghibli-forest text-ghibli-forest px-8 py-3.5 radius-3xl font-semibold btn-pop hover:bg-ghibli-forest/5">
               Baca Artikel

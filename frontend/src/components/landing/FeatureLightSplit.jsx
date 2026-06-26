@@ -24,7 +24,7 @@ export default function FeatureLightSplit() {
               Setiap produk Ghibli Treasures terinspirasi oleh karakter-karakter berjiwa kuat yang telah menyentuh jutaan hati. Dari Chihiro yang tak kenal menyerah hingga San yang menjaga alam — mereka mengingatkan kita bahwa keberanian hadir dalam bentuk yang paling lembut.
             </p>
             <Link to="/artikel" className="inline-block mt-6 px-6 py-3 bg-ghibli-forest text-ghibli-cream radius-2xl font-semibold shadow-lg btn-pop">
-              Baca Artikel Kami →
+              Baca Artikel Kami
             </Link>
           </div>
         </div>

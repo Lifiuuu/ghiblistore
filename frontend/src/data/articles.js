@@ -1,5 +1,14 @@
 // Ghibli Treasures — Dummy Articles Data
 
+import cover1 from '../assets/Totoro-collection.jpg';
+import cover2 from '../assets/plush-care-tips.jpg';
+import cover3 from '../assets/Ghibli-nature.jpg';
+import cover4 from '../assets/25th-anniversary.jpg';
+import cover5 from '../assets/room-decor.jpg';
+import cover6 from '../assets/Joe-Hisaishi.jpg';
+import cover7 from '../assets/Gift-Guide.jpg';
+import cover8 from '../assets/behind-scenes.jpg';
+
 export const articles = [
   {
     id: 1,
@@ -23,7 +32,7 @@ Setiap produk dalam koleksi ini hadir dengan kemasan eksklusif Ghibli Treasures 
     author: "Mei Kusakabe",
     authorAvatar: "https://placehold.co/64x64/A8D8EA/2E4F3B?text=MK",
     publishDate: "2026-05-01",
-    coverUrl: "https://placehold.co/800x400/A8D8EA/2E4F3B?text=Totoro+Collection",
+    coverUrl: cover1,
     status: "Published",
     readTime: 5,
     tags: ["totoro", "koleksi", "merchandise"],
@@ -49,7 +58,7 @@ Jika ingin menyimpan untuk koleksi, masukkan dalam kantong breathable (bukan pla
     author: "Satsuki Kusakabe",
     authorAvatar: "https://placehold.co/64x64/B5EAD7/2E4F3B?text=SK",
     publishDate: "2026-05-08",
-    coverUrl: "https://placehold.co/800x400/B5EAD7/2E4F3B?text=Plush+Care+Tips",
+    coverUrl: cover2,
     status: "Published",
     readTime: 4,
     tags: ["tips", "perawatan", "boneka"],
@@ -72,7 +81,7 @@ Miyazaki pernah berkata bahwa ia membuat film untuk anak-anak agar mereka bisa p
     author: "Hayao Editorial Team",
     authorAvatar: "https://placehold.co/64x64/2E4F3B/F9F6F0?text=HE",
     publishDate: "2026-05-12",
-    coverUrl: "https://placehold.co/800x400/2E4F3B/F9F6F0?text=Ghibli+Nature",
+    coverUrl: cover3,
     status: "Published",
     readTime: 7,
     tags: ["story", "filosofi", "alam", "ghibli"],
@@ -97,7 +106,7 @@ Koleksi ini tersedia mulai 1 Juni 2026 dan hanya bisa dipesan melalui Ghibli Tre
     author: "Ghibli Treasures Team",
     authorAvatar: "https://placehold.co/64x64/F7E9A7/2E4F3B?text=GT",
     publishDate: "2026-05-18",
-    coverUrl: "https://placehold.co/800x400/7BA7BC/FFFFFF?text=25th+Anniversary",
+    coverUrl: cover4,
     status: "Published",
     readTime: 5,
     tags: ["berita", "edisi-terbatas", "spirited-away"],
@@ -126,7 +135,7 @@ Notebook, tempat pensil berbentuk sapu Kiki, dan gantungan kunci naga Haku — d
     author: "Sophie Hatter",
     authorAvatar: "https://placehold.co/64x64/FAD6C0/2E4F3B?text=SH",
     publishDate: "2026-05-22",
-    coverUrl: "https://placehold.co/800x400/FAD6C0/2E4F3B?text=Room+Decor",
+    coverUrl: cover5,
     status: "Published",
     readTime: 6,
     tags: ["tips", "dekorasi", "interior"],
@@ -149,7 +158,7 @@ Itulah mengapa Ghibli Treasures menghadirkan Ghibli Soundtrack Vinyl Box — kol
     author: "Kiki Kokiri",
     authorAvatar: "https://placehold.co/64x64/C3B1E1/FFFFFF?text=KK",
     publishDate: "2026-05-25",
-    coverUrl: "https://placehold.co/800x400/C3B1E1/FFFFFF?text=Joe+Hisaishi",
+    coverUrl: cover6,
     status: "Published",
     readTime: 8,
     tags: ["story", "musik", "joe-hisaishi"],
@@ -181,7 +190,7 @@ Calcifer Flame Lamp, wind chime Nausicaä, atau set lilin Spirited Away adalah h
     author: "Nausicaä Winds",
     authorAvatar: "https://placehold.co/64x64/A2D2FF/2E4F3B?text=NW",
     publishDate: "2026-05-27",
-    coverUrl: "https://placehold.co/800x400/A2D2FF/2E4F3B?text=Gift+Guide",
+    coverUrl: cover7,
     status: "Published",
     readTime: 6,
     tags: ["tips", "hadiah", "panduan"],
@@ -209,7 +218,7 @@ Kami bangga menjadi jembatan antara dunia magis Studio Ghibli dan kehidupan seha
     author: "Ghibli Treasures Team",
     authorAvatar: "https://placehold.co/64x64/F7E9A7/2E4F3B?text=GT",
     publishDate: "2026-05-29",
-    coverUrl: "https://placehold.co/800x400/F7E9A7/2E4F3B?text=Behind+Scenes",
+    coverUrl: cover8,
     status: "Draft",
     readTime: 7,
     tags: ["berita", "behind-scenes", "kualitas"],

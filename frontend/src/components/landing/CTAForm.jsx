@@ -49,7 +49,7 @@ export default function CTAForm() {
               className="w-full mb-5 p-3 border border-ghibli-forest/20 bg-white radius-2xl text-ghibli-text text-sm focus:outline-none focus:ring-2 focus:ring-ghibli-sky/40"
             />
             <button type="submit" className="w-full bg-ghibli-forest text-ghibli-cream p-3 radius-3xl shadow-lg font-semibold btn-pop">
-              Kirimkan Sihirnya ✨
+              Kirimkan Sihirnya
             </button>
             <p className="mt-3 text-xs text-ghibli-text/60 text-center">Tidak perlu mantra — hanya selamat datang yang hangat.</p>
           </form>

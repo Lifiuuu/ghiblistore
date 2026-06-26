@@ -19,7 +19,7 @@ export default function ProductCard({ product }) {
         <img
           src={product.imageUrl}
           alt={product.name}
-          className="w-full h-52 object-cover transition-transform duration-500 group-hover:scale-105"
+          className="w-full aspect-[4/3] object-cover transition-transform duration-500 group-hover:scale-105"
         />
       </Link>
       <div className="p-5 flex flex-col flex-1">

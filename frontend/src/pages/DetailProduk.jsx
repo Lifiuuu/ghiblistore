@@ -1,11 +1,12 @@
 import { useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import { products, formatIDR } from '../data/products';
 import ProductCard from '../components/ProductCard';
 import { useCart } from '../context/CartContext';
 
 export default function DetailProduk() {
   const { id } = useParams();
+  const navigate = useNavigate();
   const product = products.find(p => p.id === Number(id));
   const { addItem } = useCart();
   const [qty, setQty] = useState(1);
@@ -25,6 +26,11 @@ export default function DetailProduk() {
     addItem(product, qty);
     setToast(true);
     setTimeout(() => setToast(false), 2000);
+  };
+
+  const handleBuyNow = () => {
+    addItem(product, qty);
+    navigate('/pembayaran', { state: { selectedIds: [product.id] } });
   };
 
   return (
@@ -48,8 +54,8 @@ export default function DetailProduk() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
           {/* Image */}
-          <div className="radius-3xl overflow-hidden shadow-soft bg-white">
-            <img src={product.imageUrl} alt={product.name} className="w-full h-80 md:h-[480px] object-cover" />
+          <div className="radius-3xl overflow-hidden shadow-soft bg-white aspect-square flex items-center justify-center p-4">
+            <img src={product.imageUrl} alt={product.name} className="max-w-full max-h-full object-contain" />
           </div>
 
           {/* Info */}
@@ -86,11 +92,11 @@ export default function DetailProduk() {
             <div className="flex flex-col sm:flex-row gap-3">
               <button onClick={handleAdd} disabled={product.stock === 0}
                 className="flex-1 bg-ghibli-forest text-ghibli-cream py-3.5 radius-2xl font-semibold btn-pop shadow-soft disabled:opacity-50 disabled:cursor-not-allowed">
-                🛍️ Tambah ke Keranjang
+                Tambah ke Keranjang
               </button>
-              <Link to="/keranjang" className="flex-1 border-2 border-ghibli-forest text-ghibli-forest py-3.5 radius-2xl font-semibold text-center btn-pop hover:bg-ghibli-forest/5">
-                Lihat Keranjang →
-              </Link>
+              <button onClick={handleBuyNow} disabled={product.stock === 0} className="flex-1 border-2 border-ghibli-forest text-ghibli-forest py-3.5 radius-2xl font-semibold text-center btn-pop hover:bg-ghibli-forest/5 disabled:opacity-50 disabled:cursor-not-allowed">
+                Beli Sekarang
+              </button>
             </div>
 
             <div className="mt-4 p-4 bg-ghibli-accent-yellow/20 radius-2xl text-xs text-ghibli-text/60">

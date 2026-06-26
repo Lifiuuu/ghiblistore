@@ -1,6 +1,27 @@
 // 20 Ghibli Merchandise Items — Dummy Data
 // Prices in IDR (Rupiah)
 
+import img1 from '../assets/Totoro-plush.jpg';
+import img2 from '../assets/Calcifer-Lamp.jpg';
+import img3 from '../assets/jiji-mug.jpg';
+import img4 from '../assets/spirited-bag.jpg';
+import img5 from '../assets/soot-pins.jpg';
+import img6 from '../assets/no-face-fig.jpg';
+import img7 from '../assets/howl-puzzle.jpg';
+import img8 from '../assets/mononoke-art.jpg';
+import img9 from '../assets/kiki-broom.jpg';
+import img10 from '../assets/wind-chime.jpg';
+import img11 from '../assets/Ponyo-Plush.jpg';
+import img12 from '../assets/totoro-umbrella.jpg';
+import img13 from '../assets/bath-candle.jpg';
+import img14 from '../assets/catbus-bag.jpg';
+import img15 from '../assets/iron-mug.jpg';
+import img16 from '../assets/forest-book.jpg';
+import img17 from '../assets/haku-key.jpg';
+import img18 from '../assets/laputta-terra.jpg';
+import img19 from '../assets/pilot-cap.jpg';
+import img20 from '../assets/vinyl-box.jpg';
+
 export const products = [
   {
     id: 1,
@@ -9,7 +30,7 @@ export const products = [
     description: "Boneka Totoro berukuran besar dengan bahan bulu premium, ekspresi lembut khas film My Neighbor Totoro. Sempurna untuk dekorasi dan teman tidur.",
     price: 349000,
     stock: 15,
-    imageUrl: "https://placehold.co/400x400/A8D8EA/2E4F3B?text=Totoro+Plush",
+    imageUrl: img1,
     rating: 4.9,
     sold: 312,
   },
@@ -20,7 +41,7 @@ export const products = [
     description: "Lampu meja berbentuk Calcifer si roh api dari Howl's Moving Castle. Berpendar oranye-merah hangat, cocok untuk sudut baca yang cozy.",
     price: 289000,
     stock: 8,
-    imageUrl: "https://placehold.co/400x400/FAD6C0/2E4F3B?text=Calcifer+Lamp",
+    imageUrl: img2,
     rating: 4.8,
     sold: 198,
   },
@@ -31,7 +52,7 @@ export const products = [
     description: "Mug keramik bergambar Jiji, kucing hitam lucu dari Kiki's Delivery Service. Kapasitas 350ml, aman untuk microwave dan dishwasher.",
     price: 125000,
     stock: 42,
-    imageUrl: "https://placehold.co/400x400/C3B1E1/FFFFFF?text=Jiji+Mug",
+    imageUrl: img3,
     rating: 4.7,
     sold: 541,
   },
@@ -42,7 +63,7 @@ export const products = [
     description: "Tas tote kanvas premium dengan ilustrasi Chihiro dan No-Face dari Spirited Away. Kapasitas besar, tali bahu nyaman, cocok untuk ke mana saja.",
     price: 165000,
     stock: 25,
-    imageUrl: "https://placehold.co/400x400/B5EAD7/2E4F3B?text=Spirited+Bag",
+    imageUrl: img4,
     rating: 4.6,
     sold: 287,
   },
@@ -53,7 +74,7 @@ export const products = [
     description: "Set 5 pin enamel berbentuk Susuwatari (Soot Sprite) dari Spirited Away & My Neighbor Totoro. Desain imut, warna hitam berkilau.",
     price: 89000,
     stock: 60,
-    imageUrl: "https://placehold.co/400x400/332E2C/F9F6F0?text=Soot+Pins",
+    imageUrl: img5,
     rating: 4.8,
     sold: 720,
   },
@@ -64,7 +85,7 @@ export const products = [
     description: "Figurin enamel No-Face setinggi 12cm dengan detail lukis tangan. Dilengkapi kotak display transparan eksklusif.",
     price: 425000,
     stock: 5,
-    imageUrl: "https://placehold.co/400x400/7BA7BC/FFFFFF?text=No-Face+Fig",
+    imageUrl: img6,
     rating: 5.0,
     sold: 63,
   },
@@ -75,7 +96,7 @@ export const products = [
     description: "Puzzle jigsaw 1000 keping bergambar Howl's Moving Castle yang megah. Ukuran selesai 68x48cm, kertas premium anti-silau.",
     price: 215000,
     stock: 12,
-    imageUrl: "https://placehold.co/400x400/F7E9A7/2E4F3B?text=Howl+Puzzle",
+    imageUrl: img7,
     rating: 4.7,
     sold: 134,
   },
@@ -86,7 +107,7 @@ export const products = [
     description: "Poster seni A3 bergambar San & Ashitaka dengan teknik cetak fine art pada kertas kanvas 300gsm. Warna tajam dan tahan lama.",
     price: 145000,
     stock: 30,
-    imageUrl: "https://placehold.co/400x400/A2D2FF/2E4F3B?text=Mononoke+Art",
+    imageUrl: img8,
     rating: 4.9,
     sold: 412,
   },
@@ -97,7 +118,7 @@ export const products = [
     description: "Tempat pensil unik berbentuk sapu terbang Kiki dari resin berkualitas tinggi. Muat 15+ pensil, sempurna untuk meja kerja.",
     price: 195000,
     stock: 18,
-    imageUrl: "https://placehold.co/400x400/FAD6C0/2E4F3B?text=Kiki+Broom",
+    imageUrl: img9,
     rating: 4.5,
     sold: 89,
   },
@@ -108,7 +129,7 @@ export const products = [
     description: "Gantungan angin keramik terinspirasi Nausicaä of the Valley of the Wind. Suara merdu, cocok di teras atau jendela.",
     price: 178000,
     stock: 20,
-    imageUrl: "https://placehold.co/400x400/B5EAD7/2E4F3B?text=Wind+Chime",
+    imageUrl: img10,
     rating: 4.6,
     sold: 156,
   },
@@ -119,7 +140,7 @@ export const products = [
     description: "Boneka Ponyo dalam wujud ikan merah kecil dari film Ponyo on the Cliff by the Sea. Ukuran 20cm, bahan fleece lembut.",
     price: 115000,
     stock: 35,
-    imageUrl: "https://placehold.co/400x400/FFB7B2/FFFFFF?text=Ponyo+Plush",
+    imageUrl: img11,
     rating: 4.8,
     sold: 398,
   },
@@ -130,7 +151,7 @@ export const products = [
     description: "Payung lipat hijau bergambar Totoro menunggu di halte bus, seperti adegan ikonik di film. Diameter 100cm saat terbuka.",
     price: 245000,
     stock: 10,
-    imageUrl: "https://placehold.co/400x400/A8D8EA/2E4F3B?text=Totoro+Umbr",
+    imageUrl: img12,
     rating: 4.7,
     sold: 201,
   },
@@ -141,7 +162,7 @@ export const products = [
     category: "Dekorasi",
     price: 198000,
     stock: 22,
-    imageUrl: "https://placehold.co/400x400/F7E9A7/2E4F3B?text=Bath+Candle",
+    imageUrl: img13,
     rating: 4.9,
     sold: 267,
   },
@@ -152,7 +173,7 @@ export const products = [
     description: "Ransel anak berbentuk Catbus dari My Neighbor Totoro. Kapasitas 8L, tali bahu empuk, ritsleting tersembunyi di badan Catbus.",
     price: 485000,
     stock: 7,
-    imageUrl: "https://placehold.co/400x400/F7E9A7/332E2C?text=Catbus+Bag",
+    imageUrl: img14,
     rating: 5.0,
     sold: 48,
   },
@@ -163,7 +184,7 @@ export const products = [
     description: "Mug besi bergaya era Ashitaka dari Princess Mononoke. Kapasitas 450ml, material besi cor berkualitas, aman untuk minuman panas.",
     price: 159000,
     stock: 28,
-    imageUrl: "https://placehold.co/400x400/C9C9C9/332E2C?text=Iron+Mug",
+    imageUrl: img15,
     rating: 4.6,
     sold: 183,
   },
@@ -174,7 +195,7 @@ export const products = [
     description: "Notebook A5 hardcover bergambar hutan magis khas Studio Ghibli. 200 halaman dot-grid, kertas cream 80gsm, friendly untuk berbagai jenis pena.",
     price: 98000,
     stock: 55,
-    imageUrl: "https://placehold.co/400x400/2E4F3B/F9F6F0?text=Forest+Book",
+    imageUrl: img16,
     rating: 4.7,
     sold: 634,
   },
@@ -185,7 +206,7 @@ export const products = [
     description: "Gantungan kunci resin berbentuk Haku dalam wujud naga dari Spirited Away. Detail sisik dan mata yang indah, ukuran 6cm.",
     price: 65000,
     stock: 80,
-    imageUrl: "https://placehold.co/400x400/7BA7BC/FFFFFF?text=Haku+Key",
+    imageUrl: img17,
     rating: 4.5,
     sold: 892,
   },
@@ -196,7 +217,7 @@ export const products = [
     description: "Terrarium mini bertema Laputa: Castle in the Sky. Dilengkapi miniatur robot penjaga, tanaman udara asli, dan kotak kaca berbentuk kastil.",
     price: 675000,
     stock: 3,
-    imageUrl: "https://placehold.co/400x400/B5EAD7/2E4F3B?text=Laputa+Terra",
+    imageUrl: img18,
     rating: 5.0,
     sold: 29,
   },
@@ -207,7 +228,7 @@ export const products = [
     description: "Topi pilot kulit sintetis terinspirasi Marco Pagot dari Porco Rosso. Ukuran universal dengan tali pengatur, cocok untuk koleksi.",
     price: 315000,
     stock: 14,
-    imageUrl: "https://placehold.co/400x400/D4A5A5/FFFFFF?text=Pilot+Cap",
+    imageUrl: img19,
     rating: 4.6,
     sold: 77,
   },
@@ -218,7 +239,7 @@ export const products = [
     description: "Box set vinyl 4 piringan hitam berisi soundtrack Spirited Away, Howl's Moving Castle, Princess Mononoke & My Neighbor Totoro oleh Joe Hisaishi.",
     price: 1250000,
     stock: 5,
-    imageUrl: "https://placehold.co/400x400/332E2C/F9F6F0?text=Vinyl+Box",
+    imageUrl: img20,
     rating: 5.0,
     sold: 41,
   },

@@ -1,9 +1,15 @@
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
-import { formatIDR } from '../data/products';
+import { formatIDR, products } from '../data/products';
 
 export default function Keranjang() {
-  const { items, removeItem, updateQuantity, totalPrice } = useCart();
+  const { items, removeItem, updateQuantity } = useCart();
+  const [selectedIds, setSelectedIds] = useState([]);
+
+  useEffect(() => {
+    setSelectedIds(items.map(i => i.id));
+  }, [items.length]); // update when items change (e.g. initial load or remove)
 
   if (items.length === 0) return (
     <div className="min-h-screen bg-ghibli-cream flex flex-col items-center justify-center py-20 px-4 text-center">
@@ -11,13 +17,16 @@ export default function Keranjang() {
       <h2 className="font-serif text-2xl text-ghibli-forest">Keranjangmu masih kosong</h2>
       <p className="text-ghibli-text/60 mt-2 text-sm max-w-sm">Tambahkan produk favorit Studio Ghibli ke keranjangmu dan mulai berbelanja!</p>
       <Link to="/katalog" className="mt-6 inline-block bg-ghibli-forest text-ghibli-cream px-8 py-3.5 radius-2xl font-semibold btn-pop shadow-soft">
-        Jelajahi Katalog 🛍️
+        Jelajahi Katalog
       </Link>
     </div>
   );
 
-  const shipping = 25000;
-  const total = totalPrice + shipping;
+  const selectedItems = items.filter(i => selectedIds.includes(i.id));
+  const selectedTotalPrice = selectedItems.reduce((sum, i) => sum + i.price * i.quantity, 0);
+
+  const shipping = selectedItems.length > 0 ? 25000 : 0;
+  const total = selectedTotalPrice + shipping;
 
   return (
     <div className="min-h-screen bg-ghibli-cream">
@@ -27,9 +36,20 @@ export default function Keranjang() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Items list */}
           <div className="lg:col-span-2 space-y-4">
-            {items.map(item => (
-              <div key={item.id} className="bg-white radius-2xl shadow-soft p-4 flex gap-4 items-start">
-                <img src={item.imageUrl} alt={item.name} className="w-20 h-20 object-cover radius-2xl shrink-0" />
+            {items.map(item => {
+              const realProduct = products.find(p => p.id === item.id) || item;
+              return (
+              <div key={item.id} className="bg-white radius-2xl shadow-soft p-4 flex gap-4 items-center sm:items-start">
+                <input 
+                  type="checkbox" 
+                  checked={selectedIds.includes(item.id)} 
+                  onChange={(e) => {
+                    if (e.target.checked) setSelectedIds([...selectedIds, item.id]);
+                    else setSelectedIds(selectedIds.filter(id => id !== item.id));
+                  }}
+                  className="w-5 h-5 accent-ghibli-forest cursor-pointer rounded-md shrink-0 sm:mt-2"
+                />
+                <img src={realProduct.imageUrl} alt={realProduct.name} className="w-20 h-20 object-cover radius-2xl shrink-0" />
                 <div className="flex-1 min-w-0">
                   <div className="flex items-start justify-between gap-2">
                     <div>
@@ -55,7 +75,8 @@ export default function Keranjang() {
                   </div>
                 </div>
               </div>
-            ))}
+              );
+            })}
           </div>
 
           {/* Order summary */}
@@ -64,8 +85,8 @@ export default function Keranjang() {
               <h2 className="font-serif text-lg text-ghibli-forest mb-4">Ringkasan Pesanan</h2>
               <div className="space-y-3 text-sm">
                 <div className="flex justify-between text-ghibli-text/70">
-                  <span>Subtotal ({items.length} produk)</span>
-                  <span className="font-semibold">{formatIDR(totalPrice)}</span>
+                  <span>Subtotal ({selectedItems.length} produk)</span>
+                  <span className="font-semibold">{formatIDR(selectedTotalPrice)}</span>
                 </div>
                 <div className="flex justify-between text-ghibli-text/70">
                   <span>Ongkos Kirim</span>
@@ -77,9 +98,15 @@ export default function Keranjang() {
                   <span>{formatIDR(total)}</span>
                 </div>
               </div>
-              <Link to="/pembayaran" className="block w-full bg-ghibli-forest text-ghibli-cream py-3.5 radius-2xl font-semibold text-center mt-5 btn-pop shadow-soft">
-                Lanjut ke Pembayaran →
-              </Link>
+              {selectedItems.length > 0 ? (
+                <Link to="/pembayaran" state={{ selectedIds }} className="block w-full bg-ghibli-forest text-ghibli-cream py-3.5 radius-2xl font-semibold text-center mt-5 btn-pop shadow-soft">
+                  Lanjut ke Pembayaran →
+                </Link>
+              ) : (
+                <button disabled className="block w-full bg-ghibli-forest/50 text-ghibli-cream py-3.5 radius-2xl font-semibold text-center mt-5 cursor-not-allowed">
+                  Pilih produk dulu
+                </button>
+              )}
               <Link to="/katalog" className="block w-full text-center text-sm text-ghibli-text/60 hover:text-ghibli-forest mt-3 transition">
                 ← Lanjut Belanja
               </Link>

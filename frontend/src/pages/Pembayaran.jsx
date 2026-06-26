@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import { formatIDR } from '../data/products';
 import Modal from '../components/Modal';
@@ -11,13 +11,20 @@ const paymentMethods = [
 ];
 
 export default function Pembayaran() {
-  const { items, totalPrice, clearCart } = useCart();
+  const { items, removeItem, clearCart } = useCart();
+  const location = useLocation();
+  const selectedIds = location.state?.selectedIds;
+
+  // Jika ada selectedIds, filter item keranjang. Jika tidak, proses semua (fallback).
+  const checkoutItems = selectedIds ? items.filter(i => selectedIds.includes(i.id)) : items;
+  const checkoutTotalPrice = checkoutItems.reduce((sum, i) => sum + i.price * i.quantity, 0);
+
   const [form, setForm] = useState({ nama: '', email: '', alamat: '', kota: '', kodePos: '', metode: 'bank' });
   const [errors, setErrors] = useState({});
   const [success, setSuccess] = useState(false);
 
-  const shipping = 25000;
-  const total = totalPrice + shipping;
+  const shipping = checkoutItems.length > 0 ? 25000 : 0;
+  const total = checkoutTotalPrice + shipping;
 
   const validate = () => {
     const e = {};
@@ -34,7 +41,11 @@ export default function Pembayaran() {
     const e2 = validate();
     if (Object.keys(e2).length) { setErrors(e2); return; }
     setSuccess(true);
-    clearCart();
+    if (selectedIds && selectedIds.length < items.length) {
+      selectedIds.forEach(id => removeItem(id));
+    } else {
+      clearCart();
+    }
   };
 
   const update = (field, val) => { setForm(f => ({ ...f, [field]: val })); setErrors(e => ({ ...e, [field]: '' })); };
@@ -46,11 +57,11 @@ export default function Pembayaran() {
       <div className="section-inner py-10">
         <h1 className="font-serif text-2xl md:text-3xl text-ghibli-forest mb-8">💳 Pembayaran</h1>
 
-        {items.length === 0 && !success ? (
+        {checkoutItems.length === 0 && !success ? (
           <div className="text-center py-20">
             <div className="text-6xl mb-4">🛒</div>
-            <p className="font-serif text-ghibli-forest text-xl">Keranjangmu kosong</p>
-            <Link to="/katalog" className="mt-4 inline-block text-ghibli-sky underline font-semibold">Belanja sekarang</Link>
+            <p className="font-serif text-ghibli-forest text-xl">Keranjangmu kosong atau belum ada produk yang dipilih</p>
+            <Link to="/keranjang" className="mt-4 inline-block text-ghibli-sky underline font-semibold">Kembali ke Keranjang</Link>
           </div>
         ) : (
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -96,7 +107,7 @@ export default function Pembayaran() {
                   {paymentMethods.map(m => (
                     <label key={m.id} className={`flex items-center gap-4 p-4 radius-2xl border-2 cursor-pointer transition ${form.metode === m.id ? 'border-ghibli-forest bg-ghibli-forest/5' : 'border-ghibli-forest/15 hover:border-ghibli-forest/40'}`}>
                       <input type="radio" name="metode" value={m.id} checked={form.metode === m.id} onChange={() => update('metode', m.id)} className="accent-ghibli-forest" />
-                        <span className="text-xl sm:text-2xl">{m.icon}</span>
+                      <span className="text-xl sm:text-2xl">{m.icon}</span>
                       <div>
                         <div className="font-semibold text-sm text-ghibli-text">{m.label}</div>
                         <div className="text-xs text-ghibli-text/50">{m.sub}</div>
@@ -116,7 +127,7 @@ export default function Pembayaran() {
               <div className="bg-white radius-2xl shadow-soft p-6 lg:sticky lg:top-24">
                 <h2 className="font-serif text-lg text-ghibli-forest mb-4">Ringkasan Pesanan</h2>
                 <div className="space-y-2 max-h-60 overflow-y-auto mb-4">
-                  {items.map(i => (
+                  {checkoutItems.map(i => (
                     <div key={i.id} className="flex justify-between text-xs gap-2">
                       <span className="text-ghibli-text/70 truncate">{i.name} <span className="font-semibold">×{i.quantity}</span></span>
                       <span className="font-semibold text-ghibli-text shrink-0">{formatIDR(i.price * i.quantity)}</span>
@@ -125,7 +136,7 @@ export default function Pembayaran() {
                 </div>
                 <hr className="border-ghibli-forest/10 mb-3" />
                 <div className="space-y-2 text-sm">
-                  <div className="flex justify-between text-ghibli-text/70"><span>Subtotal</span><span className="font-semibold">{formatIDR(totalPrice)}</span></div>
+                  <div className="flex justify-between text-ghibli-text/70"><span>Subtotal</span><span className="font-semibold">{formatIDR(checkoutTotalPrice)}</span></div>
                   <div className="flex justify-between text-ghibli-text/70"><span>Ongkir</span><span className="font-semibold">{formatIDR(shipping)}</span></div>
                   <hr className="border-ghibli-forest/10" />
                   <div className="flex justify-between text-ghibli-forest font-bold text-base"><span>Total</span><span>{formatIDR(total)}</span></div>
@@ -137,7 +148,7 @@ export default function Pembayaran() {
       </div>
 
       {/* Success Modal */}
-      <Modal isOpen={success} onClose={() => {}} title="">
+      <Modal isOpen={success} onClose={() => { }} title="">
         <div className="text-center py-4">
           <div className="text-5xl sm:text-6xl mb-4">🌿</div>
           <h2 className="font-serif text-xl text-ghibli-forest mb-2">Pembayaran Berhasil!</h2>

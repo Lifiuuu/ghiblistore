@@ -19,11 +19,6 @@ export default function DetailArtikel() {
 
   return (
     <div className="min-h-screen bg-ghibli-cream">
-      {/* Cover */}
-      <div className="w-full h-64 md:h-80 overflow-hidden">
-        <img src={article.coverUrl} alt={article.title} className="w-full h-full object-cover" />
-      </div>
-
       <div className="section-inner py-10 max-w-3xl">
         {/* Back */}
         <Link to="/artikel" className="inline-flex items-center gap-2 text-sm font-semibold text-ghibli-sky mb-6 hover:underline">
@@ -40,7 +35,7 @@ export default function DetailArtikel() {
         <h1 className="font-serif text-2xl md:text-3xl text-ghibli-forest font-semibold leading-tight mb-4">{article.title}</h1>
 
         {/* Author */}
-        <div className="flex items-center gap-3 mb-6 pb-6 border-b border-ghibli-forest/10">
+        <div className="flex items-center gap-3 mb-6">
           <img src={article.authorAvatar} alt={article.author} className="w-10 h-10 rounded-full object-cover" />
           <div>
             <div className="font-semibold text-sm text-ghibli-text">{article.author}</div>
@@ -48,17 +43,52 @@ export default function DetailArtikel() {
           </div>
         </div>
 
+        {/* Cover */}
+        <div className="w-full mb-8 radius-3xl overflow-hidden shadow-soft bg-white">
+          <img src={article.coverUrl} alt={article.title} className="w-full h-auto object-contain" />
+        </div>
+
         {/* Content */}
-        <div className="prose prose-sm max-w-none">
+        <div className="prose prose-sm max-w-none text-ghibli-text/80 leading-relaxed">
           {article.content.split('\n\n').map((para, i) => {
-            if (para.startsWith('**') && para.endsWith('**')) {
+            // Helper to format bold text
+            const formatText = (text) => {
+              if (!text.includes('**')) return text;
+              const parts = text.split(/\*\*(.*?)\*\*/);
+              return parts.map((p, idx) => idx % 2 === 1 ? <strong key={idx} className="text-ghibli-forest">{p}</strong> : p);
+            };
+
+            // Full Header H3 (only if the entire paragraph is wrapped in **)
+            if (para.startsWith('**') && para.endsWith('**') && !para.includes('\n')) {
               return <h3 key={i} className="font-serif text-lg text-ghibli-forest font-semibold mt-6 mb-2">{para.replace(/\*\*/g, '')}</h3>;
             }
-            if (para.startsWith('**')) {
-              const parts = para.split(/\*\*(.*?)\*\*/);
-              return <p key={i} className="text-ghibli-text/80 leading-relaxed mb-4">{parts.map((p, j) => j % 2 === 1 ? <strong key={j} className="text-ghibli-forest">{p}</strong> : p)}</p>;
+
+            // If it's a list (contains newlines and dashes)
+            if (para.includes('\n- ')) {
+              const lines = para.split('\n');
+              return (
+                <div key={i} className="mb-4">
+                  {lines.map((line, j) => {
+                    if (line.trim().startsWith('- ')) {
+                      return <li key={j} className="ml-5 list-disc pl-1 mb-1">{formatText(line.substring(2))}</li>;
+                    }
+                    return <p key={j} className="mb-2">{formatText(line)}</p>;
+                  })}
+                </div>
+              );
             }
-            return <p key={i} className="text-ghibli-text/80 leading-relaxed mb-4">{para}</p>;
+
+            // Regular paragraph, possibly with newlines inside
+            return (
+              <p key={i} className="mb-4">
+                {para.split('\n').map((line, j) => (
+                  <span key={j}>
+                    {formatText(line)}
+                    {j < para.split('\n').length - 1 && <br />}
+                  </span>
+                ))}
+              </p>
+            );
           })}
         </div>
 

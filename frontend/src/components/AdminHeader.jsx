@@ -36,11 +36,9 @@ export default function AdminHeader({ onToggleSidebar = () => {} }) {
 
         {/* Admin Avatar */}
         <div className="flex items-center gap-2.5 cursor-pointer">
-          <img
-            src="https://placehold.co/36x36/F7E9A7/2E4F3B?text=YM"
-            alt="Admin"
-            className="w-9 h-9 rounded-full object-cover border-2 border-ghibli-forest/20"
-          />
+          <div className="w-9 h-9 rounded-full bg-ghibli-forest/10 flex items-center justify-center text-ghibli-forest font-bold text-xs border border-ghibli-forest/20">
+            YM
+          </div>
           <div className="hidden sm:block">
             <div className="text-sm font-semibold text-ghibli-text">Yubaba Manager</div>
             <div className="text-[10px] text-ghibli-text/50">Super Admin</div>

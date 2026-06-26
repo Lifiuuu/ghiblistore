@@ -104,8 +104,15 @@ export default function AdminKelolaArtikel() {
             <input required value={form.author} onChange={e => setForm(f => ({ ...f, author: e.target.value }))} className={inputCls} placeholder="Nama penulis" />
           </div>
           <div>
-            <label className="block text-xs font-semibold text-ghibli-text mb-1">URL Cover</label>
-            <input value={form.coverUrl} onChange={e => setForm(f => ({ ...f, coverUrl: e.target.value }))} className={inputCls} placeholder="https://..." />
+            <label className="block text-xs font-semibold text-ghibli-text mb-1">Cover Artikel</label>
+            <input type="file" accept="image/*" onChange={e => {
+              const file = e.target.files[0];
+              if (file) {
+                const url = URL.createObjectURL(file);
+                setForm(f => ({ ...f, coverUrl: url }));
+              }
+            }} className={`${inputCls} file:mr-4 file:py-1 file:px-3 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-ghibli-forest file:text-white hover:file:bg-ghibli-forest/90 cursor-pointer`} />
+            {form.coverUrl && form.coverUrl.startsWith('blob:') && <p className="text-[10px] text-emerald-600 mt-1">Cover baru dipilih</p>}
           </div>
           <div>
             <label className="block text-xs font-semibold text-ghibli-text mb-1">Konten *</label>

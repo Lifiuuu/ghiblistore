@@ -112,8 +112,15 @@ export default function AdminKelolaProdk() {
               <input required type="number" value={form.stock} onChange={e => setForm(f => ({ ...f, stock: e.target.value }))} className={inputCls} placeholder="10" />
             </div>
             <div>
-              <label className="block text-xs font-semibold text-ghibli-text mb-1">URL Gambar</label>
-              <input value={form.imageUrl} onChange={e => setForm(f => ({ ...f, imageUrl: e.target.value }))} className={inputCls} placeholder="https://..." />
+              <label className="block text-xs font-semibold text-ghibli-text mb-1">Gambar Produk</label>
+              <input type="file" accept="image/*" onChange={e => {
+                const file = e.target.files[0];
+                if (file) {
+                  const url = URL.createObjectURL(file);
+                  setForm(f => ({ ...f, imageUrl: url }));
+                }
+              }} className={`${inputCls} file:mr-4 file:py-1 file:px-3 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-ghibli-forest file:text-white hover:file:bg-ghibli-forest/90 cursor-pointer`} />
+              {form.imageUrl && form.imageUrl.startsWith('blob:') && <p className="text-[10px] text-emerald-600 mt-1">Gambar baru dipilih</p>}
             </div>
           </div>
           <div>
